@@ -1,11 +1,9 @@
 package br.ufrn.goallist.service.impl;
 
-import br.ufrn.goallist.model.Meta;
 import br.ufrn.goallist.model.Pessoa;
 import br.ufrn.goallist.repository.PessoaRepository;
 import br.ufrn.goallist.service.IPessoaService;
-import br.ufrn.goallist.service.exception.MetaNotFoundException;
-import br.ufrn.goallist.service.exception.PessoaNotFoundException;
+import br.ufrn.goallist.exception.PessoaNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

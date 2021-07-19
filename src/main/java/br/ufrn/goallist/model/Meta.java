@@ -20,10 +20,11 @@ public class Meta extends BaseEntity {
     private String descricao;
     private LocalDate dataInicio;
     private LocalDate dataPrevisaoConclusao;
+    private LocalDate dataConclusao;
     private MetaEstado estado;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "meta_id")
     private List<Etapa> etapas;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Objetivo objetivo;
+    private Pessoa pessoa;
 }

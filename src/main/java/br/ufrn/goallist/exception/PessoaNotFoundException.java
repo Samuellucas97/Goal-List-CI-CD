@@ -1,8 +1,8 @@
-package br.ufrn.goallist.service.exception;
+package br.ufrn.goallist.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class MetaNotFoundException extends CustomException {
+public class PessoaNotFoundException extends CustomException {
 }

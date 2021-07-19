@@ -1,4 +1,4 @@
-package br.ufrn.goallist.service.exception;
+package br.ufrn.goallist.exception;
 
 public class CustomException extends Exception {
 }

@@ -4,7 +4,7 @@ import br.ufrn.goallist.enums.EtapaEstado;
 import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.repository.EtapaRepository;
 import br.ufrn.goallist.service.IEtapaService;
-import br.ufrn.goallist.service.exception.EtapaNotFoundException;
+import br.ufrn.goallist.exception.EtapaNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

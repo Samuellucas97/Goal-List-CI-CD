@@ -3,7 +3,7 @@ package br.ufrn.goallist.service.impl;
 import br.ufrn.goallist.model.Meta;
 import br.ufrn.goallist.repository.MetaRepository;
 import br.ufrn.goallist.service.IMetaService;
-import br.ufrn.goallist.service.exception.MetaNotFoundException;
+import br.ufrn.goallist.exception.MetaNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

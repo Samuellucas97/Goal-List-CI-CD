@@ -17,5 +17,5 @@ public class Pessoa extends BaseEntity {
     private String nome;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "pessoa_id")
-    private List<Objetivo> objetivos;
+    private List<Meta> metas;
 }
