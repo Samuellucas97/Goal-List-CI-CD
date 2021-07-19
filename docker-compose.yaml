@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysql_db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=goal_list
+    ports:
+      - 3306:3306
+    volumes:
+      - goal-list_db:/var/lib/mysql
+
+volumes:
+  goal-list_db:

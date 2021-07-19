@@ -1,0 +1,13 @@
+dist: trusty
+language: java
+sudo: false
+jdk:
+  - oraclejdk11
+
+git:
+  depth: 2 #clone repository to a maximum depth of 2 commits
+
+script: "gradle build"
+
+after_success:
+  - gradle test
