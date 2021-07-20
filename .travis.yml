@@ -7,7 +7,4 @@ jdk:
 git:
   depth: 2 #clone repository to a maximum depth of 2 commits
 
-script: "./gradlew clean assemble"
-
-after_success:
-  - ./gradlew integration
+script: "./gradlew test"
