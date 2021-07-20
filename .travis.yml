@@ -9,5 +9,5 @@ git:
 
 script: "./gradlew clean build"
 
-after_success:
-  - ./gradlew integration
+#after_success:
+#  - ./gradlew integration
