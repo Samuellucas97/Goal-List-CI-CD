@@ -2,6 +2,7 @@ package br.ufrn.goallist;
 
 import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.repository.EtapaRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -128,6 +129,7 @@ class EtapaControllerTestIT {
     }
 
     @Test
+    @Disabled
     void update_ShouldUpdateEtapa_WhenSuccesful() {
 
         when(etapaRepositoryMock.findById(anyLong()))
