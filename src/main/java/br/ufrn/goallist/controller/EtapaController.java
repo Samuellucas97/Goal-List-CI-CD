@@ -29,7 +29,7 @@ public class EtapaController {
         return etapaService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Etapa create(@RequestBody EtapaDto etapa) {
         return etapaService.create(EtapaDto.transform(etapa));

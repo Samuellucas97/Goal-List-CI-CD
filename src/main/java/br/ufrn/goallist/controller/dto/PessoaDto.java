@@ -2,11 +2,15 @@ package br.ufrn.goallist.controller.dto;
 
 import br.ufrn.goallist.model.Meta;
 import br.ufrn.goallist.model.Pessoa;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PessoaDto {
     private String nome;
     private List<Meta> metas;

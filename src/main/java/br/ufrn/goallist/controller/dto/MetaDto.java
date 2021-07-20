@@ -1,12 +1,15 @@
 package br.ufrn.goallist.controller.dto;
 
-import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.model.Meta;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MetaDto {
     private String titulo;
     private String descricao;

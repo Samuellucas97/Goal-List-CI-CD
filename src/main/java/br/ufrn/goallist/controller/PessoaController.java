@@ -30,7 +30,7 @@ public class PessoaController {
         return pessoaService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Pessoa create(@RequestBody PessoaDto pessoa) {
         return pessoaService.create(PessoaDto.transform(pessoa));

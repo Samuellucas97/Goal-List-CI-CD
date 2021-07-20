@@ -1,9 +1,6 @@
 package br.ufrn.goallist.integrationtest;
 
-import br.ufrn.goallist.enums.EtapaEstado;
-import br.ufrn.goallist.enums.MetaEstado;
 import br.ufrn.goallist.model.Etapa;
-import br.ufrn.goallist.model.Meta;
 import br.ufrn.goallist.repository.EtapaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +11,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 
-import java.time.LocalDate;
 import java.util.List;
 
+import static br.ufrn.goallist.utils.EtapaUtils.creatorEtapa;
+import static br.ufrn.goallist.utils.EtapaUtils.creatorEtapaWithId;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
@@ -72,7 +70,7 @@ class EtapaControllerTestIT {
         assertAll(
             () -> assertThat(responseEntity).isNotNull(),
             () -> assertThat(responseEntity.getStatusCode()).isEqualTo(ACCEPTED),
-            () -> assertThat(resultEtapa.getId()).isNotNull()
+            () -> assertThat(resultEtapa.getId()).isNotNull(),
             () -> assertThat(resultEtapa.getId()).isEqualTo(etapaWithId.getId())
         );
     }
@@ -100,39 +98,5 @@ class EtapaControllerTestIT {
         assertThat(responseEntity.getStatusCode()).isEqualTo(NOT_FOUND);
     }
 
-    private Etapa creatorEtapa() {
-        return Etapa.builder()
-                .titulo("fake title")
-                .descricao("fake description")
-                .meta(
-                        Meta.builder()
-                                .titulo("fake title")
-                                .descricao("fake description")
-                                .estado(MetaEstado.NAO_CONCLUIDA)
-                                .dataConclusao(LocalDate.now())
-                                .build()
-                )
-                .estado(EtapaEstado.NAO_CONCLUIDA)
-                .build();
-    }
-
-    private Etapa creatorEtapaWithId() {
-        Etapa etapa = Etapa.builder()
-                .titulo("fake title")
-                .descricao("fake description")
-                .meta(
-                        Meta.builder()
-                                .titulo("fake title")
-                                .descricao("fake description")
-                                .estado(MetaEstado.NAO_CONCLUIDA)
-                                .dataConclusao(LocalDate.now())
-                                .build()
-                )
-                .estado(EtapaEstado.NAO_CONCLUIDA)
-                .build();
-
-        etapa.setId(1L);
-        return etapa;
-    }
 
 }

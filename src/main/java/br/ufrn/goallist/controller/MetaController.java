@@ -29,7 +29,7 @@ public class MetaController {
         return metaService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Meta create(@RequestBody MetaDto meta) {
         return metaService.create(MetaDto.transform(meta));
