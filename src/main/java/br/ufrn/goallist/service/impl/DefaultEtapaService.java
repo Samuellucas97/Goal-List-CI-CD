@@ -22,8 +22,6 @@ public class DefaultEtapaService implements IEtapaService {
 
     @Override
     public Etapa create(Etapa etapa) {
-        etapa.setEstado(EtapaEstado.NAO_CONCLUIDA);
-        etapa.setMeta(null);
         etapa.create();
         return etapaRepository.save(etapa);
     }
