@@ -1,4 +1,7 @@
 ## Goal List API
+
+[![Build Status](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD.svg?branch=main)](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD)
+
 In this repository contains a Goal List API (using Spring Framework). Bellow, we present some informations:
 
 To build Gradle project from the source directory use: `./gradlew clean build --info`

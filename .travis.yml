@@ -7,12 +7,7 @@ jdk:
 git:
   depth: 2 #clone repository to a maximum depth of 2 commits
 
-script: "gradle build"
+script: "./gradlew clear build"
 
 after_success:
-  - gradle test
-
-deploy:
-  provider: heroku
-  api_key:
-    secure: "YOUR ENCRYPTED API KEY"
+  - ./gradlew integration
