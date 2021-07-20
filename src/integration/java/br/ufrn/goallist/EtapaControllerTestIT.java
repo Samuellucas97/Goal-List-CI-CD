@@ -129,7 +129,6 @@ class EtapaControllerTestIT {
     }
 
     @Test
-    @Disabled
     void update_ShouldUpdateEtapa_WhenSuccesful() {
 
         when(etapaRepositoryMock.findById(anyLong()))
