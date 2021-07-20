@@ -107,9 +107,11 @@ class EtapaControllerTest {
 
     @Test
     void update_ShouldUpdateEtapa_WhenSuccesful() throws Exception {
-        when(etapaService.create(any(Etapa.class))).thenReturn(creatorEtapaWithId());
 
-        final MockHttpServletRequestBuilder builder = put(baseUrl)
+        when(etapaService.update(anyLong(), any(Etapa.class))).thenReturn(creatorEtapaWithId());
+
+        Long idEtapa = 1L;
+        final MockHttpServletRequestBuilder builder = put(baseUrl + idEtapa.toString())
                 .contentType(APPLICATION_JSON).accept(APPLICATION_JSON)
                 .characterEncoding("UTF-8").content(this.mapper.writeValueAsBytes(creatorEtapaDto()));
 
