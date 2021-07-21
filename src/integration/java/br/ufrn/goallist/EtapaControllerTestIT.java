@@ -122,10 +122,6 @@ class EtapaControllerTestIT {
     @Test
     void deleteById_ShouldReturnNotFound_WhenEtapaDoesntExist() {
 
-        doThrow(EtapaNotFoundException.class)
-                .when(etapaRepositoryMock)
-                .findById(anyLong());
-
         Long idEtapa = 1L;
         ResponseEntity<Void> responseEntity = restTemplate.exchange(baseUrl + "{id}", DELETE,
                 null, Void.class, idEtapa);
