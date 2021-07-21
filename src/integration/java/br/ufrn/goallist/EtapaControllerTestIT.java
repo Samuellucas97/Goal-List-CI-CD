@@ -1,5 +1,6 @@
 package br.ufrn.goallist;
 
+import br.ufrn.goallist.exception.EtapaNotFoundException;
 import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.repository.EtapaRepository;
 import org.junit.jupiter.api.Disabled;
@@ -21,8 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpStatus.*;
@@ -121,6 +121,11 @@ class EtapaControllerTestIT {
 
     @Test
     void deleteById_ShouldReturnNotFound_WhenEtapaDoesntExist() {
+
+        doThrow(EtapaNotFoundException.class)
+                .when(etapaRepositoryMock)
+                .findById(anyLong());
+
         Long idEtapa = 1L;
         ResponseEntity<Void> responseEntity = restTemplate.exchange(baseUrl + "{id}", DELETE,
                 null, Void.class, idEtapa);
