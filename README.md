@@ -40,7 +40,7 @@ It will be generate a database service container according `docker-compose.yaml`
 
 ### Running aplication
 
-Since you have a database running in you local machine, you have the following command available:
+Since you have a database running in you local machine, you have the following set of avaliable commands:
 
 |                Command               |              Information             |
 |:------------------------------------:|:------------------------------------:|

@@ -1,9 +1,7 @@
 package br.ufrn.goallist;
 
-import br.ufrn.goallist.exception.EtapaNotFoundException;
 import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.repository.EtapaRepository;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,13 +20,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpStatus.*;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class EtapaControllerTestIT {
+class EtapaControllerIT {
 
     @Autowired
     private TestRestTemplate restTemplate;

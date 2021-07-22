@@ -17,6 +17,6 @@ public class Etapa extends BaseEntity {
     private String titulo;
     private String descricao;
     private EtapaEstado estado;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Meta meta;
 }

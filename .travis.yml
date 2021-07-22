@@ -2,9 +2,13 @@ dist: trusty
 language: java
 sudo: false
 jdk:
-  - oraclejdk11
-
+- oraclejdk11
 git:
-  depth: 2 #clone repository to a maximum depth of 2 commits
-
+  depth: 2
 script: "./gradlew test"
+deploy:
+  provider: heroku
+  api_key:
+    secure: "$HEROKU_TOKEN"
+    on:
+      branch: main

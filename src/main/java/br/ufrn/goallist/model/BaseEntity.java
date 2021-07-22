@@ -15,14 +15,14 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime createdAt;
-    private LocalDateTime updateddAt;
+    private LocalDateTime updatedAt;
 
     public void create() {
         createdAt = LocalDateTime.now();
-        updateddAt = createdAt;
+        updatedAt = createdAt;
     }
 
     public void update() {
-        updateddAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
     }
 }
