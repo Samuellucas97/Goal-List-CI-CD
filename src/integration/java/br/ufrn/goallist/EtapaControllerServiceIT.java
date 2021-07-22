@@ -2,10 +2,10 @@ package br.ufrn.goallist;
 
 import br.ufrn.goallist.model.Etapa;
 import br.ufrn.goallist.repository.EtapaRepository;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -14,8 +14,8 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
-import static br.ufrn.goallist.controller.dto.EtapaDto.transform;
-import static br.ufrn.goallist.utils.EtapaUtils.*;
+import static br.ufrn.goallist.utils.EtapaUtils.creatorEtapaDto;
+import static br.ufrn.goallist.utils.EtapaUtils.creatorEtapaWithId;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
@@ -27,20 +27,21 @@ import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpStatus.*;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class EtapaControllerIntegrationTest {
+class EtapaControllerServiceIT {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
-//    @Autowired
-//    private EtapaRepository etapaRepository;
+    @MockBean
+    private EtapaRepository etapaRepositoryMock;
 
     private String baseUrl = "/v1/etapa/";
 
     @Test
     void getAll_ShouldReturnEmptyList_WhenThereIsNotEtapa() {
 
-//        assertThat(etapaRepository.findAll()).isEmpty();
+        when(etapaRepositoryMock.findAll())
+                .thenReturn(List.of());
 
         final ResponseEntity<List<Etapa>> resultResponse = restTemplate
                 .exchange( baseUrl + "", GET, null,
@@ -57,28 +58,31 @@ class EtapaControllerIntegrationTest {
     }
 
 
-//    @Test
-//    void getAll_ShouldReturnEtapaList_WhenSuccessful() {
-//
-//        etapaRepository.save(transform(creatorEtapaDto()));
-//
-//        final ResponseEntity<List<Etapa>> resultResponse = restTemplate
-//                .exchange( baseUrl + "", GET, null,
-//                        new ParameterizedTypeReference<List<Etapa>>() {
-//                });
-//
-//        final List<Etapa> resultEtapaList = resultResponse.getBody();
-//
-//        assertAll(
-//                () -> assertThat(resultResponse.getStatusCode()).isEqualTo(OK),
-//                () -> assertThat(resultEtapaList).isNotNull(),
-//                () -> assertThat(resultEtapaList).isNotEmpty(),
-//                () -> assertThat(resultEtapaList).contains(creatorEtapaWithId())
-//        );
-//    }
-//
+    @Test
+    void getAll_ShouldReturnEtapaList_WhenSuccessful() {
+
+        when(etapaRepositoryMock.findAll())
+                .thenReturn(List.of(creatorEtapaWithId()));
+
+        final ResponseEntity<List<Etapa>> resultResponse = restTemplate
+                .exchange( baseUrl + "", GET, null,
+                        new ParameterizedTypeReference<List<Etapa>>() {
+                });
+
+        final List<Etapa> resultEtapaList = resultResponse.getBody();
+
+        assertAll(
+                () -> assertThat(resultResponse.getStatusCode()).isEqualTo(OK),
+                () -> assertThat(resultEtapaList).isNotNull(),
+                () -> assertThat(resultEtapaList).isNotEmpty(),
+                () -> assertThat(resultEtapaList).contains(creatorEtapaWithId())
+        );
+    }
+
     @Test
     void create_ShouldCreateEtapa_WhenSuccessful() {
+
+        when(etapaRepositoryMock.save(any(Etapa.class))).thenReturn(creatorEtapaWithId());
 
         ResponseEntity<Etapa> responseEntity = restTemplate.exchange(baseUrl + "", POST,
                 new HttpEntity<>(creatorEtapaDto()), new ParameterizedTypeReference<Etapa>() {
@@ -90,14 +94,17 @@ class EtapaControllerIntegrationTest {
             () -> assertThat(responseEntity).isNotNull(),
             () -> assertThat(responseEntity.getStatusCode()).isEqualTo(CREATED),
             () -> assertThat(resultEtapa).isNotNull(),
-            () -> assertThat(resultEtapa.getId()).isNotNull()
-//            () -> assertThat(resultEtapa.getId()).isEqualTo(creatorEtapaWithId().getId())
+            () -> assertThat(resultEtapa.getId()).isNotNull(),
+            () -> assertThat(resultEtapa.getId()).isEqualTo(creatorEtapaWithId().getId())
         );
     }
 
     @Test
-    @Disabled
     void deleteById_ShouldRemoveEtapa_WhenSucessful() {
+        doNothing().when(etapaRepositoryMock).delete(any(Etapa.class));
+
+        when(etapaRepositoryMock.findById(anyLong()))
+                .thenReturn(Optional.of(creatorEtapaWithId()));
 
         Long idEtapa = 1L;
         ResponseEntity<Void> responseEntity = restTemplate.exchange(baseUrl + "{id}", DELETE,
@@ -112,7 +119,6 @@ class EtapaControllerIntegrationTest {
 
 
     @Test
-    @Disabled
     void deleteById_ShouldReturnNotFound_WhenEtapaDoesntExist() {
 
         Long idEtapa = 1L;
@@ -123,8 +129,12 @@ class EtapaControllerIntegrationTest {
     }
 
     @Test
-    @Disabled
     void update_ShouldUpdateEtapa_WhenSuccesful() {
+
+        when(etapaRepositoryMock.findById(anyLong()))
+                .thenReturn(Optional.of(creatorEtapaWithId()));
+
+        when(etapaRepositoryMock.save(any(Etapa.class))).thenReturn(creatorEtapaWithId());
 
         Long idEtapa = 1L;
         ResponseEntity<Etapa> responseEntity = restTemplate.exchange(baseUrl + "{id}", PUT,
