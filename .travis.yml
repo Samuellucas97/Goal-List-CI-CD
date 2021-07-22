@@ -11,4 +11,5 @@ deploy:
   api_key:
     secure: "$HEROKU_TOKEN"
     on:
-      branch: main
+      branch: heroku_production
+      app: goal-list-api
