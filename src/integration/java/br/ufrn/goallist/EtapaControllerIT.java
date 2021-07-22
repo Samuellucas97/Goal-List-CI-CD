@@ -67,24 +67,25 @@ class EtapaControllerIntegrationTest {
 
 
     @Test
+    @Disabled
     void getAll_ShouldReturnEtapaList_WhenSuccessful() {
 
-        etapaRepository.save(creatorEtapa());
-        assertThat(etapaRepository.findAll()).isNotEmpty();
-
-
+//        etapaRepository.save(creatorEtapa());
+//        assertThat(etapaRepository.findAll()).isNotEmpty();
+//
+//
 //        final ResponseEntity<List<Etapa>> resultResponse = restTemplate
 //                .exchange( baseUrl + "", GET, null,
 //                        new ParameterizedTypeReference<List<Etapa>>() {
 //                });
-//
+
 //        final List<Etapa> resultEtapaList = resultResponse.getBody();
 //
 //        assertAll(
 //                () -> assertThat(resultResponse.getStatusCode()).isEqualTo(OK)
-////                () -> assertThat(resultEtapaList).isNotNull(),
-////                () -> assertThat(resultEtapaList).isNotEmpty(),
-////                () -> assertThat(resultEtapaList).contains(creatorEtapaWithId())
+//                () -> assertThat(resultEtapaList).isNotNull(),
+//                () -> assertThat(resultEtapaList).isNotEmpty(),
+//                () -> assertThat(resultEtapaList).contains(creatorEtapaWithId())
 //        );
     }
 
@@ -106,25 +107,6 @@ class EtapaControllerIntegrationTest {
             () -> assertThat(resultEtapa.getId()).isEqualTo(idFirstEtapa)
         );
     }
-
-    @Test
-    @Disabled
-    void deleteById_ShouldRemoveEtapa_WhenSucessful() {
-
-        etapaRepository.save(creatorEtapa());
-        assertThat(etapaRepository.findAll()).isNotEmpty();
-
-        Long idEtapa = 1L;
-        ResponseEntity<Void> responseEntity = restTemplate.exchange(baseUrl + "{id}", DELETE,
-                null, Void.class, idEtapa);
-
-        assertAll(
-                () -> assertThat(responseEntity).isNotNull(),
-                () -> assertThat(responseEntity.getStatusCode()).isEqualTo(NO_CONTENT),
-                () -> assertThat(responseEntity.getBody()).isNull()
-        );
-    }
-
 
     @Test
     void deleteById_ShouldReturnNotFound_WhenEtapaDoesntExist() {
