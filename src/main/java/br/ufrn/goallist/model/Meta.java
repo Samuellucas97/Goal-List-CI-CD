@@ -2,9 +2,11 @@ package br.ufrn.goallist.model;
 
 
 import br.ufrn.goallist.enums.MetaEstado;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +17,9 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(callSuper = false)
 @Builder
-public class Meta extends BaseEntity {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Meta extends BaseEntity implements Serializable {
+    private static final long serialVersionUID = -3913629036907715099L;
     private String titulo;
     private String descricao;
     private LocalDate dataInicio;
