@@ -1,15 +1,16 @@
 dist: trusty
 language: java
-sudo: false
 jdk:
-- oraclejdk11
+  - oraclejdk11
 git:
   depth: 2
 script: "./gradlew test"
 deploy:
   provider: heroku
   api_key:
-    secure: "$HEROKU_TOKEN"
-    on:
-      branch: heroku_production
-      app: goal-list-api
+    secure: XI91E2G39/gKhAgcZ9rBJ7fXPmbNUN5WiqCEh9vrA1JDxC0n627wopf9Nd9hN9OkeZE8pg7kMRIjXw75hNwAqPj3rsaCIb9zl1t+pssGw80mvWiv9N7uf6YRt0nxk0XCPffqAUwxgRTIW95TAGysJZdtVWpzBpuW44kIWG9kykEepEMT7Rx8pYaBccq70XLbHM4pqKVmnZitvFs8A7DcUb5csMQblr7YsLiTv282vbbE+Ngg/ZJNRQ5GJ8axkMWp4SYe1n6+zjXeY3UOHTK+rHs3pPqLDuqnl3GKx5KTzZpdceKgpKuWAcJfMGhMrhGbA2B4eCSNU53l04g3ZMXnmO+MLWcR5ZqwfG2EK6okLkVRHvswt17JeTxluiD59Yu89mZCs0xNeH79+gHPzNQn3vwpsaz23CuCzEk2gdyyix0Ds93KnG09d7Pgggknr+51TJUuj35HmCYNO3HGngZfGyLCttY2adGo+UQEbgcvjQ/IqyBhH1KW7xSJbgwExrs0uinqzu7GZkl/f785XYZlWkeDHd0Xh/U9u6LO61H+LFEesfg2i1fosBSg1yJqqpSWDxlQi3M5+axGnlkwq78ah/xpE51ch4QL1VOvcP1z5xnLng+wL6E8siTZjc+9+neHFPvq51/Whwhh1KxkjjfQXgWlqlM9PeNFdE1d+iGjyPE=
+  app: goal-list-api
+  true:
+    branch: main
+    repo: Samuellucas97/Goal-List-CI-CD
+  skip_cleanup: 'true'
