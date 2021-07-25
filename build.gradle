@@ -59,6 +59,8 @@ task integration(type:Test, description: 'Integration testing of API', group:'Ve
 }
 
 test {
+	systemProperty 'cucumber.options', '--plugin junit:target/surefire-reports/cucumber-junit.xml'
+	include '**/*Test.class'
 	useJUnitPlatform()
 }
 
