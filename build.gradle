@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'org.sonarqube' version '3.3'
+	id 'jacoco'
 	id 'java'
 }
 
@@ -36,7 +37,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 sourceSets {
-
 	test {
 		java.srcDirs = ['src/test/java']
 		resources.srcDirs = ['src/test/resources']
@@ -63,7 +63,12 @@ test {
 	systemProperty 'cucumber.options', '--plugin junit:target/surefire-reports/cucumber-junit.xml'
 	include '**/*Test.class'
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
+jacocoTestReport {
+	dependsOn test
+}
+
 
 build.dependsOn integration
 integration.mustRunAfter test
