@@ -6,9 +6,9 @@ This repository contains a Goal List API implemented with Spring Framework (Java
 
 ### Content
 
- - [Prerequisites]()
- - [How to Install and to Run]()
- - [Running SonarQube analysis]()
+ - [Prerequisites](#prerequisites)
+ - [How to Install and to Run](#how-to-install-and-to-run)
+ - [Running SonarQube analysis](#running-sonarqube-analysis)
 
 
 ## Prerequisites
