@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD.svg?branch=main)](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Samuellucas97_Goal-List-CI-CD&metric=alert_status)](https://sonarcloud.io/dashboard?id=Samuellucas97_Goal-List-CI-CD)
+
 This repository contains a Goal List API implemented with Spring Framework (Java).
 
 ## Prerequisites
@@ -51,3 +53,4 @@ Since you have a database running in you local machine, you have the following s
 
 
 Moreover, you can find the avaliable endpoint documentation in http://localhost:8080/swagger-ui.html
+
