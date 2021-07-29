@@ -2,7 +2,12 @@
 
 [![Build Status](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD.svg?branch=main)](https://travis-ci.com/Samuellucas97/Goal-List-CI-CD) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Samuellucas97_Goal-List-CI-CD&metric=alert_status)](https://sonarcloud.io/dashboard?id=Samuellucas97_Goal-List-CI-CD)
 
-This repository contains a Goal List API implemented with Spring Framework (Java).
+This repository contains a Goal List API implemented with [Spring Framework](https://spring.io) (Java). **You can see some information clicking on the above badges.**
+
+### Content
+- [Prerequisites](#prerequisites)
+- [How to Install and to Run](#how-to-install-and-to-run)
+
 
 ## Prerequisites
 
@@ -10,7 +15,7 @@ This repository contains a Goal List API implemented with Spring Framework (Java
 - Docker compose (_optional_)
 - Gradle
 
-## How to install and to run
+## How to Install and to Run
 
 In your computer, run the following commands to clone in your local machine:
 
@@ -47,6 +52,7 @@ Since you have a database running in you local machine, you have the following s
 | To run the application  on port 8080 |          `./gradlew bootRun`         |
 |           to run unit tests          |     `./gradlew clean test --info`    |
 |       To run integration tests       | `./gradlew clean integration --info` |
+|       To run JaCoCo analysis         | `./gradlew jacocoTestReport` |
 |      to generate project's build     |    `./gradlew clean build --info`    |
 
 
