@@ -109,6 +109,6 @@ You can see an example bellow:
 ```
 $ ./gradlew jacocoTestReport sonarqube \
     -Dsonar.projectKey=sonarqube-test \
-    -Dsonar.host.url=http://localhost:9090 \
+    -Dsonar.host.url=http://localhost:9000 \
     -Dsonar.login=fbe0bbb03ab3b7eda59e3ff15f56c9edb82900aa 
 ```
