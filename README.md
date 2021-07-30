@@ -1,5 +1,7 @@
 ## Goal List API
 
+[![Build](https://github.com/Samuellucas97/Goal-List-CI-CD/actions/workflows/build.yaml/badge.svg)](https://github.com/Samuellucas97/Goal-List-CI-CD/actions/workflows/build.yaml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Samuellucas97_Goal-List-CI-CD&metric=alert_status)](https://sonarcloud.io/dashboard?id=Samuellucas97_Goal-List-CI-CD)
+
 
 This repository contains a Goal List API implemented with [Spring Framework](https://spring.io) (Java).   
 
